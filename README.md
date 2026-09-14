@@ -27,4 +27,8 @@ VITE_SITE_URL=https://tu-dominio.vercel.app
 
 ## Despliegue
 
-El proyecto está listo para Vercel o Netlify. En Vercel: Import Git Repository, framework Vite, y agrega `VITE_SITE_URL` con la URL que te asigne (o tu dominio).
+El sitio usa Nitro para salir en Vercel. Importa el repo, deja el comando `npm run build` y agrega:
+
+```bash
+VITE_SITE_URL=https://tu-dominio.vercel.app
+```
