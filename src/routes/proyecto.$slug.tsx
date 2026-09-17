@@ -69,6 +69,28 @@ function ProjectPage() {
             </section>
           ) : null}
 
+          {project.gallery && project.gallery.length > 0 ? (
+            <section className="mt-20 border-t border-foreground/15 pt-16">
+              <p className="text-tiny mb-10">Identidad y aplicaciones</p>
+              <div className={`grid grid-cols-2 gap-4 md:gap-6 ${project.gallery.length > 2 ? "md:grid-cols-4" : "md:max-w-3xl"}`}>
+                {project.gallery.map((piece) => (
+                  <figure key={piece.id}>
+                    <img
+                      src={piece.image}
+                      alt={piece.label}
+                      className={`aspect-[3/4] w-full rounded-2xl border border-foreground/15 ${
+                        piece.fit === "contain" ? "object-contain p-3" : "object-cover"
+                      }`}
+                    />
+                    <figcaption className="text-tiny mt-3 text-muted-foreground">
+                      {piece.label}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           {project.posts && project.posts.length > 0 ? (
             <section className="mt-20 border-t border-foreground/15 pt-16">
               <p className="text-tiny mb-10">Contenido para Instagram</p>

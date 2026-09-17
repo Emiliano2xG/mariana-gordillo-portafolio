@@ -1,5 +1,5 @@
 export const profile = {
-  name: "Mariana Gómez Gordillo",
+  name: "Mariana Ozuna Gordillo",
   firstName: "Mariana",
   lastName: "Gordillo",
   initials: "MG",
@@ -39,7 +39,7 @@ export const experience = [
     location: "Tuxtla Gutiérrez, Chiapas",
     bullets: [
       "Desarrollo integral de proyectos de branding, diseño de logotipos, manuales de identidad visual y piezas publicitarias para empresas emergentes.",
-      "Gestión de marca y comunicación gráfica para proyectos clave en diversos sectores: Sargal (energía solar), Temazcal Mi Jardín (turismo y bienestar), Consultorio Médico Privado (salud) y Nail Studio (cuidado personal).",
+      "Gestión de marca y comunicación gráfica para proyectos clave en diversos sectores: Sargal (energía solar), Skin (skincare), Temazcal Mi Jardín (turismo y bienestar), Consultorio Médico Privado (salud) y Denisse Villalva Lash Studio (nails y pestañas).",
       "Atención y prospección directa de clientes, cotización, gestión de tiempos de entrega y alineación del diseño visual a los objetivos comerciales.",
     ],
   },
@@ -62,6 +62,13 @@ export type MagazineEdition = {
   href: string;
 };
 
+export type BrandingPiece = {
+  id: string;
+  image: string;
+  label: string;
+  fit?: "cover" | "contain";
+};
+
 export type Project = {
   slug: string;
   number: string;
@@ -72,8 +79,10 @@ export type Project = {
   summary: string;
   highlights?: string[];
   cover?: string;
+  instagramUrl?: string;
   posts?: InstagramPost[];
   editions?: MagazineEdition[];
+  gallery?: BrandingPiece[];
 };
 
 export const projects: Project[] = [
@@ -191,20 +200,95 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "temazcal-mi-jardin",
+    slug: "skin",
     number: "03",
+    title: "Skin",
+    sector: "Skincare",
+    summary:
+      "Identidad de marca, colorimetría, aplicaciones y contenido para Instagram de Skin, una marca de skincare. Desde el sistema visual hasta los posts y las piezas aplicadas en poster y tote.",
+    highlights: ["Branding", "Colorimetría", "Contenido para Instagram", "Aplicaciones de marca"],
+    instagramUrl: "https://www.instagram.com/skin.shopcm",
+    posts: [
+      {
+        id: "skin-latte",
+        account: "skin.shopcm",
+        images: ["/posts_skin_1.png"],
+        caption:
+          "Latte makeup por Skin. Tenemos los mejores productos para preparar tu piel antes de este maquillaje en tendencia 🤩",
+        hashtags: ["#skin", "#maquillaje", "#skincare", "#latte", "#comitandedominguez"],
+      },
+      {
+        id: "skin-texturas",
+        account: "skin.shopcm",
+        images: ["/posts_skin_2.png"],
+        caption:
+          "En Skin queremos darte un enfoque de cómo son las texturas de nuestros productos ⭐️ y cómo funcionan dependiendo tu tipo de piel 🫰🏻 ¡Aparta tus productos favs con nosotros!",
+        hashtags: ["#skincare", "#productosdebelleza", "#comitandedominguez", "#mini"],
+      },
+      {
+        id: "skin-recap",
+        account: "skin.shopcm",
+        images: ["/posts_skin_3.png"],
+        caption:
+          "Te tenemos un recap de nuestros productos favoritos 🙂‍↕️ ¿Cuáles son los tuyos? En Skin tenemos tus favoritos 🫰🏻✨",
+        hashtags: ["#skincare", "#mini", "#comitandedominguez", "#skin"],
+      },
+    ],
+    gallery: [
+      {
+        id: "skin-poster",
+        image: "/branding_skin_1.jpeg",
+        label: "Aplicación en poster",
+      },
+      {
+        id: "skin-grafica",
+        image: "/branding_skin_2.jpeg",
+        label: "Pieza gráfica",
+      },
+      {
+        id: "skin-tote",
+        image: "/branding_skin_3.jpeg",
+        label: "Aplicación en tote",
+      },
+      {
+        id: "skin-color",
+        image: "/colorimetria_skin.jpeg",
+        label: "Colorimetría",
+        fit: "contain",
+      },
+    ],
+  },
+  {
+    slug: "temazcal-mi-jardin",
+    number: "04",
     title: "Temazcal Mi Jardín",
     lines: ["Temazcal", "Mi Jardín"],
-    initials: "TM",
+    initials: "MJ",
     sector: "Turismo y bienestar",
     summary:
-      "Gestión de marca y comunicación gráfica para un proyecto de turismo y bienestar. Identidad visual y piezas pensadas para transmitir descanso, ritual y hospitalidad.",
-    highlights: ["Identidad visual", "Gestión de marca", "Comunicación gráfica"],
-    cover: "/temazcal.jpg",
+      "Identidad de marca para Mi Jardín Temazcal, en colaboración con Debyema. Logotipos, papelería, mockups, tarjetas de fidelidad y piezas para redes del nuevo branding.",
+    highlights: ["Identidad visual", "Papelería", "Mockups", "Stories"],
+    gallery: [
+      {
+        id: "temazcal-sistema",
+        image: "/mockup_temazcal.jpeg",
+        label: "Sistema de marca Mi Jardín Temazcal: logotipos, papelería, mockup y tipografía",
+      },
+      {
+        id: "temazcal-aplicaciones",
+        image: "/new_branding_temazcal.jpeg",
+        label: "Aplicaciones: bolsa, etiqueta, tarjeta de fidelidad y piezas para redes",
+      },
+      {
+        id: "temazcal-story",
+        image: "/Temazcal_story_coming_soon_new_branding.jpeg",
+        label: "Story de nuevo branding Debyema × Mi Jardín Temazcal",
+      },
+    ],
   },
   {
     slug: "consultorio-medico",
-    number: "04",
+    number: "05",
     title: "Consultorio Médico Privado",
     lines: ["Consultorio", "Médico"],
     initials: "CM",
@@ -216,15 +300,28 @@ export const projects: Project[] = [
   },
   {
     slug: "nail-studio",
-    number: "05",
-    title: "Nail Studio",
-    lines: ["Nail", "Studio"],
-    initials: "NS",
-    sector: "Cuidado personal",
+    number: "06",
+    title: "Denisse Villalva",
+    lines: ["Denisse", "Villalva"],
+    initials: "DV",
+    sector: "Lash Studio",
     summary:
-      "Branding y piezas publicitarias para un studio de cuidado personal. Identidad visual y materiales de comunicación para destacar el servicio y atraer clientas.",
-    highlights: ["Branding", "Identidad visual", "Piezas publicitarias"],
-    cover: "/nail_studio.jpg",
+      "Identidad y papelería para Denisse Villalva Lash Studio. Un sistema en lila y crema: logotipo, tarjetas de presentación, menú de precios y tarjetas de fidelidad para nails, pestañas y spa.",
+    highlights: ["Logotipo", "Tarjetas de presentación", "Menú de precios", "Tarjetas de fidelidad"],
+    gallery: [
+      {
+        id: "nails-sistema",
+        image: "/nails_branding.jpeg",
+        label: "Antes y después: logotipo, tarjetas de presentación y menú de precios",
+        fit: "contain",
+      },
+      {
+        id: "nails-fidelidad",
+        image: "/nails_branding_2.jpeg",
+        label: "Tarjetas de fidelidad y mockup",
+        fit: "contain",
+      },
+    ],
   },
 ];
 
